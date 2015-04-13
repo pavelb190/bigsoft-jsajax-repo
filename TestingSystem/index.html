@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TestingSystem">
+<head>
+	<title>BIGsoft. JS&amp;Ajax - Testing System &copy;</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		.caption {
+			color: green;
+		}
+		.question-sections {
+			border: 1px solid blue;
+			display: inline-block;
+		}
+		.question-section {
+			padding: 5px;
+			min-width: 295px;
+			border: 1px solid green;
+			display: inline-block;
+		}
+		.title {
+			margin: 12px 0px 4px 0px;
+			font-size: 26px;
+		}
+		.test-form {
+			border: 1px solid blue;
+		}
+		.questions {
+			border: 1px solid red;
+		}
+		.total {
+			float: right;
+		}
+	</style>
+</head>
+<body ng-controller="TestingController as Testing">
+	<h1 class="caption">Testing JavaScript!</h1>
+	<div class="question-sections">
+		<div class="question-section" ng-repeat="question in Testing.questions">
+			<p class="title">
+				<a href="#">{{question.section}}</a>
+			</p>
+			<div class="questions">
+				<ul>
+					<li ng-repeat="quest in question.questions">
+						{{quest.question}}
+					</li>
+				</ul>
+			</div>
+			<span class="total">8/10</span>
+		</div>
+	</div>
+	<!-- <button>Continue...</button>-->
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
