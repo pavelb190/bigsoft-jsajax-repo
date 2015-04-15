@@ -1,0 +1,119 @@
+{
+	"caption": "JavaScript Testing",
+	"author": "BIGsoft",
+	"chapters": {
+		"Introduction": {
+			"level": 1,
+			"questions": [
+				{
+					"title": "When was JavaScript been coined?",
+					"answers": [
+						{
+							"answer": "in 1976 year"
+						},
+						{
+							"answer": "in 1978 year"
+						},
+						{
+							"answer": "in 1994 year",
+							"isRight": true
+						}
+					],
+					"rightAnswer": 2
+				},
+				{
+					"title": "Who is a creator of JavaScript?",
+					"answers": [
+						{
+							"answer": "Me"
+						},
+						{
+							"answer": "He",
+							"isRight": true
+						},
+						{
+							"answer": "You"
+						}
+					],
+					"rightAnswer": 1
+				},
+				{
+					"title": "JavaScript:",
+					"answers": [
+						{
+							"answer": "functional"
+						},
+						{
+							"answer": "prototype inheritance"
+						},
+						{
+							"answer": "interpreted"
+						}
+					],
+					"rightAnswer": 0
+				}
+			],
+			"minimumStability": 1
+		},
+		"Basics": {
+			"level": 2,
+			"questions": [
+				{
+					"title": "Why do we need to use the var keyword?",
+					"answers": [
+						{
+							"answer": "To define the variable on local or functional scope",
+							"isRight": true
+						},
+						{
+							"answer": "I don't know"
+						}
+					],
+					"rightAnswer": 0
+				}
+			],
+			"minimumStability": 1
+		},
+		"Advanced": {
+			"level": 3,
+			"questions": [
+				{
+					"title": "What is the Closure?",
+					"answers": [
+						{
+							"answer": "It's the function with the special scope of inner variables",
+							"isRight": true
+						},
+						{
+							"answer": "I don't know"
+						}
+					],
+					"rightAnswer": 0
+				}
+			],
+			"minimumStability": 1
+		},
+		"Frameworks": {
+			"level": 4,
+			"questions": [
+				{
+					"title": "What is the MVC-framework for Single Page Application developed by and support by Google company?",
+					"answers": [
+						{
+							"answer": "It's EmberJs, of course!"
+						},
+						{
+							"answer": "It's AngularJS",
+							"isRight": true
+						},
+						{
+							"answer": "I don't know"
+						}
+					],
+					"rightAnswer": 1
+				}
+			],
+			"minimumStability": 1
+		}
+	}
+}
