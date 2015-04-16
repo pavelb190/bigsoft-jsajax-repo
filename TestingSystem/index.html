@@ -19,6 +19,18 @@
 			border: 1px solid green;
 			display: inline-block;
 		}
+		.current {
+			background-color: yellow;
+		}
+		.completed {
+			background-color: green;
+		}
+		.excellent {
+			background-color: #40FF00;
+		}
+		.not-available {
+			background-color: silver;
+		}
 		.title {
 			margin: 12px 0px 4px 0px;
 			font-size: 26px;
@@ -29,6 +41,21 @@
 		.questions {
 			border: 1px solid red;
 		}
+		.is-right {
+			font-weight: bold;
+			color: green;
+			text-decoration: line-through;
+		}
+		.is-wrong {
+			font-weight: bold;
+			color: red;
+		}
+		.answer {
+			color: silver;
+		}
+		.results {
+			background-color: white;
+		}
 		.total {
 			float: right;
 		}
@@ -38,18 +65,25 @@
 	<h1 class="caption">{{test.caption}} <span style="font-size: 14px; color: silver;">from {{test.author}}</span></h1>
 	<div class="question-sections">
 		<!-- <h1>{{sortChaptsByLevel(test.chapters)}}</h1>-->
-		<div class="question-section" ng-controller="TestController as currTest" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
+		<div class="question-section" ng-controller="TestController as currTest" ng-class="{'current': true, 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'not-available': !chapter.available}" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
 			<p class="title">
 				<a href="#">{{chapter.title}}</a>
 				<span style="font-size: 21px; color: silver;" ng-show="isCompleted(chapter.title)">{{result}}/{{chapter.questions.length}}</span>
 				<div class="control-panel" style="display: inline-block;" ng-show="chapter.available">
 					<a href="#" ng-hide="hasMinimumStability()" ng-click="beginTest(chapter.title)">Начать</a>
 					<a href="#" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-click="continueTest(chapter.title)">Продолжить</a>
-					<a href="#" ng-show="isCompleted(chapter.title)" ng-click="testResult()">Результаты</a>
+					<a href="#" ng-show="isCompleted(chapter.title) && !hasMaxResult()" ng-click="testResult()">Результаты</a>
 				</div>
 			</p>
+			<div class="results" ng-show="resultShowed">
+				<ol>
+					<li ng-repeat="(i, quest) in chapter.questions">
+						<span ng-class="{'question': true, 'is-right': checkAnswer(i), 'is-wrong': !checkAnswer(i)}">{{quest.title}}</span> <span class="answer" ng-show="!checkAnswer(i)">- "{{quest.answers[quest.answered].answer}}"</span>
+					</li>
+				</ol>
+			</div>
 			<div id="test-form" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" style="border: 1px solid green;">
-				<div class="current question">
+				<div class="current-question">
 					{{getQuestion(cqIdx).title}}
 					<ul ng-controller="AnswersController">
 						<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">

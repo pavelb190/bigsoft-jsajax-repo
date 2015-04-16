@@ -50,6 +50,8 @@
 			$scope.cqIdx = null;	//current question-index in question's array;
 			$scope.result = false;	//current test result;
 			
+			$scope.resultShowed = false;	//toggle of showing of the testing result;
+			
 			$scope.beginTest = function(test) {
 				$scope.current = test;
 				$scope.cqIdx = 0;
@@ -82,12 +84,19 @@
 				
 				return $rootScope.test.chapters[$scope.current].questions[idx] || null;
 			};
+			$scope.checkAnswer = function(qIdx) {
+				
+				var _rightAnswer = $rootScope.test.chapters[$scope.current].questions[qIdx].rightAnswer,
+					_answered = $rootScope.test.chapters[$scope.current].questions[qIdx].answered;
+				
+				return (_answered === _rightAnswer);
+			};
 			$scope.applyAnswer = function() {
 				
 				var _rightAnswer = $rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].rightAnswer,
 					_answered = $rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].answered;
 				
-				if (_rightAnswer === _answered) {
+				if (_answered === _rightAnswer) {
 					
 					$scope.result++;
 				}
@@ -127,6 +136,10 @@
 			
 				return $rootScope.test.chapters[test].hasBegun || false;
 			};
+			$scope.hasMaxResult = function() {
+			
+				return ($scope.result === $rootScope.test.chapters[$scope.current].questions.length);
+			};
 			$scope.hasMinimumStability = function() {
 				
 				return $scope.result >= $rootScope.test.chapters[$scope.current].minimumStability;
@@ -137,6 +150,7 @@
 			};
 			$scope.testResult = function() {
 				
+				$scope.resultShowed = !$scope.resultShowed;
 			};
 		}]); //.filter('firstQuestion', function() {});
 		
