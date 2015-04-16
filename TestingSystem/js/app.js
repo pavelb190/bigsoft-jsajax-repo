@@ -3,7 +3,8 @@
 		
 		var app = angular.module('TestingSystem', []);
 		
-		app.controller('TestingController', ['$http', '$rootScope', function($http, $rootScope) {
+		app.controller('TestingController', ['$http', '$scope', '$rootScope', function($http, $scope, $rootScope) {
+		
 			$http
 				.get('test-questions/JavaScript.json')
 				.success(function(data, sts, hdrs, cfg) {
@@ -18,7 +19,30 @@
 				.error(function(data, sts, hdrs, cfg) {
 					alert('[Getting test questions.] Some error has occured!');
 				});
-		}]);
+				
+		}]).filter('orderChaptsBy', function() {
+			
+			return function(itms, fld, revrs) {
+				
+				var _filtered = [];
+				
+				angular.forEach(itms, function(item, k) {
+					
+					item.title = k;
+					
+					_filtered.push(item);
+				});
+				
+				_filtered.sort(function(a, b) {
+					
+					return (a[fld] < b[fld] ? -1 : (b[fld] < a[fld] ? 1 : 0));
+				});
+				
+				if (revrs) { _filtered.reverse(); }
+				
+				return _filtered;
+			};
+		});
 		
 		app.controller('TestController', ['$scope', '$rootScope', function($scope, $rootScope) {
 			

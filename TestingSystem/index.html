@@ -37,22 +37,23 @@
 <body ng-controller="TestingController as Test">
 	<h1 class="caption">{{test.caption}} <span style="font-size: 14px; color: silver;">from {{test.author}}</span></h1>
 	<div class="question-sections">
-		<div class="question-section" ng-controller="TestController as currTest" ng-repeat="(title, chapter) in test.chapters">
+		<!-- <h1>{{sortChaptsByLevel(test.chapters)}}</h1>-->
+		<div class="question-section" ng-controller="TestController as currTest" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
 			<p class="title">
-				<a href="#">{{title}}</a>
-				<span style="font-size: 21px; color: silver;" ng-show="isCompleted(title)">{{result}}/{{chapter.questions.length}}</span>
+				<a href="#">{{chapter.title}}</a>
+				<span style="font-size: 21px; color: silver;" ng-show="isCompleted(chapter.title)">{{result}}/{{chapter.questions.length}}</span>
 				<div class="control-panel" style="display: inline-block;" ng-show="chapter.available">
-					<a href="#" ng-hide="hasMinimumStability()" ng-click="beginTest(title)">Начать</a>
-					<a href="#" ng-show="hasBegun(title) && !isCompleted(title)" ng-click="continueTest(title)">Продолжить</a>
-					<a href="#" ng-show="isCompleted(title)" ng-click="testResult()">Результаты</a>
+					<a href="#" ng-hide="hasMinimumStability()" ng-click="beginTest(chapter.title)">Начать</a>
+					<a href="#" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-click="continueTest(chapter.title)">Продолжить</a>
+					<a href="#" ng-show="isCompleted(chapter.title)" ng-click="testResult()">Результаты</a>
 				</div>
 			</p>
-			<div id="test-form" ng-show="hasBegun(title) && !isCompleted(title)" style="border: 1px solid green;">
+			<div id="test-form" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" style="border: 1px solid green;">
 				<div class="current question">
 					{{getQuestion(cqIdx).title}}
 					<ul ng-controller="AnswersController">
 						<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">
-							<input type="radio" name="answers" ng-click="setAnswer(title, cqIdx, i)"> {{answer.answer}}
+							<input type="radio" name="answers" ng-click="setAnswer(chapter.title, cqIdx, i)"> {{answer.answer}}
 						</li>
 					</ul>
 				</div>
