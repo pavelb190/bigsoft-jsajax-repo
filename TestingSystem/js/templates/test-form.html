@@ -1,0 +1,11 @@
+
+	
+	<div class="current-question">
+		{{getQuestion(cqIdx).title}}
+		<ul ng-controller="AnswersController">
+			<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">
+				<input type="radio" name="answers" ng-click="setAnswer(chapter.title, cqIdx, i)"> {{answer.answer}}
+			</li>
+		</ul>
+	</div>
+	<button ng-click="applyAnswer()">Apply! Next>></button> <a href="#" ng-click="quitTest()">Quit</a>

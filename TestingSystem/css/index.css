@@ -1,0 +1,68 @@
+
+	.caption {
+		color: green;
+	}
+	
+	.question-sections {
+		border: 1px solid blue;
+		display: inline-block;
+	}
+	
+	.question-section {
+		padding: 5px;
+		min-width: 295px;
+		border: 1px solid green;
+		display: inline-block;
+	}
+	
+	.current {
+		background-color: yellow;
+	}
+	
+	.completed {
+		background-color: green;
+	}
+	
+	.excellent {
+		background-color: #40FF00;
+	}
+	
+	.not-available {
+		background-color: silver;
+	}
+	
+	.title {
+		margin: 12px 0px 4px 0px;
+		font-size: 26px;
+	}
+	
+	.test-form {
+		border: 1px solid blue;
+	}
+	
+	.questions {
+		border: 1px solid red;
+	}
+	
+	.is-right {
+		font-weight: bold;
+		color: green;
+		text-decoration: line-through;
+	}
+	
+	.is-wrong {
+		font-weight: bold;
+		color: red;
+	}
+	
+	.answer {
+		color: silver;
+	}
+	
+	.test-results {
+		background-color: white;
+	}
+	
+	.total {
+		float: right;
+	}

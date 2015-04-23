@@ -1,0 +1,9 @@
+
+
+	<div class="test-results">
+		<ol>
+			<li ng-repeat="(i, quest) in chapter.questions">
+				<span ng-class="{'question': true, 'is-right': checkAnswer(i), 'is-wrong': !checkAnswer(i)}">{{quest.title}}</span> <span class="answer" ng-show="!checkAnswer(i)">- "{{quest.answers[quest.answered].answer}}"</span>
+			</li>
+		</ol>
+	</div>
