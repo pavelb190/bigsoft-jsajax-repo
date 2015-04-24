@@ -9,7 +9,7 @@
 <body ng-controller="TestingController as Test">
 	<h1 class="caption">{{test.caption}} <span style="font-size: 14px; color: silver;">from {{test.author}}</span></h1>
 	<div class="question-sections">
-		<div class="question-section" ng-controller="TestController as currTest" ng-class="{'current': true, 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(), 'not-available': !chapter.available}" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
+		<div class="question-section" ng-controller="TestController as currTest" ng-class="{'current': true, 'failed': answered && isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(), 'not-available': !chapter.available}" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
 			<p class="title">
 				<a href="#">{{chapter.title}}</a>
 				<span style="font-size: 21px; color: silver;" ng-show="isCompleted(chapter.title)">{{result}}/{{chapter.questions.length}}</span>

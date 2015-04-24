@@ -19,6 +19,10 @@
 		background-color: yellow;
 	}
 	
+	.failed {
+		background-color: red;
+	}
+	
 	.completed {
 		background-color: green;
 	}
