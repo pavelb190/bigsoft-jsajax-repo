@@ -53,7 +53,12 @@
 					"rightAnswer": 0
 				}
 			],
-			"minimumStability": 2
+			"minimumStability": 2,
+			"references": [
+				"http://wikipedia.com",
+				"Book 1",
+				"Book 3"
+			]
 		},
 		"Basics": {
 			"level": 2,

@@ -6,4 +6,12 @@
 				<span ng-class="{'question': true, 'is-wrong': true}">{{quest.title}}</span> <!-- <span class="answer" ng-show="!checkAnswer(i)">- "{{quest.answers[quest.answered].answer}}"</span>-->
 			</li>
 		</ol>
+		<section ng-show="chapter.references && !hasMinimumStability()">
+			<h3 style="font-size: 13px; color: silver;">References:</h3>
+			<ul style="font-size: 11px;">
+				<li ng-repeat="ref in chapter.references">
+					{{ref}}
+				</li>
+			</ul>
+		</section>
 	</div>
