@@ -35,18 +35,25 @@
 			});
 			
 			$scope.beginTest = function(test) {
+				
 				$scope.current = test;
 				$scope.cqIdx = 0;
 				$scope.result = 0;
 				
+				$scope.resultDisabled = true;
+				
 				angular.forEach($rootScope.test.chapters[test].questions, function(quest, i) {
-					//Clear answers for questions;
+					
+					//Clear missings and answers for questions;
+					delete quest.missing;
 					delete quest.answered;
 				});
 				
 				$rootScope.test.chapters[test].hasBegun = true;
 				
 				$rootScope.test.chapters[test].completed = false;
+				
+				delete $scope.answered;
 			};
 			$scope.continueTest = function(test) {
 			
@@ -73,15 +80,9 @@
 				
 				return (_answered === _rightAnswer);
 			};
-			$scope.applyAnswer = function() {
+			//Private:
+			function toNextQuestion() {
 				
-				var _rightAnswer = $rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].rightAnswer,
-					_answered = $rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].answered;
-				
-				if (_answered === _rightAnswer) {
-					
-					$scope.result++;
-				}
 				if ($scope.cqIdx === $rootScope.test.chapters[$scope.current].questions.length - 1) {
 					
 					$rootScope.test.chapters[$scope.current].currResult = $scope.result;
@@ -108,7 +109,30 @@
 					
 					$scope.cqIdx++;
 				}
-				//return ($rootScope.test.chapters[$scope.current].questions[iQst].answered = ans) && true;
+			}
+			$scope.applyAnswer = function() {
+				
+				var _rightAnswer = $rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].rightAnswer,
+					_answered = $rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].answered;
+				
+				if (_answered === _rightAnswer) {
+					
+					$scope.result++;
+				}
+				else {
+					
+					$scope.resultDisabled = false;
+				}
+				//Flag for knowing that no missing all test.
+				$scope.answered = true;
+				
+				toNextQuestion();
+			};
+			$scope.skipQuestion = function() {
+				
+				$rootScope.test.chapters[$scope.current].questions[$scope.cqIdx].missing = true;
+				
+				toNextQuestion();
 			};
 			$scope.quitTest = function() {
 				

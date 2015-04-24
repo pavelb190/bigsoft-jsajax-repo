@@ -1,10 +1,10 @@
 
 	
-	<div class="current-question">
+	<div class="current-question" ng-click="skipQuestion()">
 		{{getQuestion(cqIdx).title}}
 		<ul ng-controller="AnswersController">
 			<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">
-				<input type="radio" name="answers" ng-click="setAnswer(chapter.title, cqIdx, i)"> {{answer.answer}}
+				<input type="radio" name="answers" ng-click="setAnswer(chapter.title, cqIdx, i); $event.stopPropagation();"> {{answer.answer}}
 			</li>
 		</ul>
 	</div>

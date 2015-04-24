@@ -36,6 +36,11 @@
 		font-size: 26px;
 	}
 	
+	.disabled, a.disabled:hover, a.disabled:link {
+		color: /*#939393*/#939393;
+		text-decoration: none;
+	}
+	
 	.test-form {
 		border: 1px solid blue;
 	}

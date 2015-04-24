@@ -16,7 +16,7 @@
 				<div class="control-panel" style="display: inline-block;" ng-show="chapter.available">
 					<a href="#" ng-hide="hasMinimumStability()" ng-click="beginTest(chapter.title)">Начать</a>
 					<a href="#" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-click="continueTest(chapter.title)">Продолжить</a>
-					<a href="#" ng-show="isCompleted(chapter.title) && !hasMaxResult()" ng-click="testResult()">{{buttonResultsText}}</a>
+					<a href="#" ng-show="answered && (isCompleted(chapter.title) && !hasMaxResult())" ng-class="{'disabled': resultDisabled}" ng-click="!resultDisabled && testResult()">{{buttonResultsText}}</a>
 				</div>
 			</p>
 			<div class="custom-form" ng-show="resultShowed" ng-include="'js/templates/results.html'"></div>
