@@ -1,0 +1,20 @@
+
+	<div class="modal-header">
+		<h3 style="margin: 0; color: green;">{{chapter}}</h3>
+	</div>
+	<div class="modal-body">
+		<p style="color: blue; font-size: 17px; font-weight: bold; text-shadow: 3px 1px 2px rgba(150, 150, 150, 0.82);">
+			{{getQuestion(cqIdx).title}}
+		</p>
+		<hr/>
+		<div>
+			<ol style="color: silver; list-style-type: lower-alpha;">
+				<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">
+					<a href="#" class="answer" ng-click="applyAnswer(i)">{{answer.answer}}</a>
+				</li>
+			</ol>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning" ng-click="cancel()">Завершить тест</button>
+	</div>

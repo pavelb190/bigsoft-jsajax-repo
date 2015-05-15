@@ -3,29 +3,30 @@
 <head>
 	<title>BIGsoft. JS&amp;Ajax - Testing System &copy;</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/index.css">
 </head>
-<body ng-controller="TestingController as Test">
-	<h1 class="caption">{{test.caption}} <span style="font-size: 14px; color: silver;">from {{test.author}}</span></h1>
+<body ng-controller="TestingCtrl">
+	<h1 class="caption">&ldquo;{{quiz.caption}}&rdquo; <span style="font-size: 14px; color: silver;">from {{quiz.author}}&copy;</span></h1>
 	<div class="question-sections">
-		<div class="question-section" ng-controller="TestController as currTest" ng-class="{'current': true, 'failed': answered && isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(), 'not-available': !chapter.available}" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
+		<div class="question-section" ng-controller="ChapterCtrl" ng-click="chapter.available && !hasMaxResult(chapter.title) && showTestForm(chapter.title)" ng-class="{'current': true, 'failed': isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(chapter.title), 'not-available': !chapter.available}" ng-repeat="chapter in quiz.chapters | orderChaptsBy:'level'">
 			<p class="title">
-				<a href="#">{{chapter.title}}</a>
-				<span style="font-size: 21px; color: silver;" ng-show="isCompleted(chapter.title)">{{result}}/{{chapter.questions.length}}</span>
-				<div class="control-panel" style="display: inline-block;" ng-show="chapter.available">
-					<a href="#" ng-hide="hasMinimumStability()" ng-click="beginTest(chapter.title)">Начать</a>
-					<a href="#" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-click="continueTest(chapter.title)">Продолжить</a>
-					<a href="#" ng-show="answered && (isCompleted(chapter.title) && !hasMaxResult())" ng-class="{'disabled': resultDisabled}" ng-click="!resultDisabled && testResult()">{{buttonResultsText}}</a>
-				</div>
+				<h2 style="margin: 0; display: inline-block;">{{chapter.title}}</h2>
+				<h3 style="margin: 0; padding: 5px 6px 0px 0px; float: right; display: inline-block;">
+					<img style="height: 51px; vertical-align: center;" ng-show="chapter.available && hasMaxResult(chapter.title)" src="images/gold_medal.png"/>
+					<span ng-show="chapter.available && isCompleted(chapter.title) && !hasMaxResult(chapter.title)">{{getResult(chapter.title)}}/{{getQuestionCount(chapter.title)}}</span>
+				</h3>
 			</p>
-			<div class="custom-form" ng-show="resultShowed" ng-include="'js/templates/results.html'"></div>
-			<div class="custom-form" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-include="'js/templates/test-form.html'" style="border: 1px solid green;"></div>
+			<div class="control-panel" style="display: absolute;" ng-show="chapter.available">
+				<a href="#" ng-hide="hasMaxResult(chapter.title)" ng-click="showTestForm(chapter.title); $event.stopPropagation();">Начать</a>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/libs/angular.min.js"></script>
 	<script type="text/javascript" src="js/libs/jquery.min.js"></script>
-	<script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/libs/ui-bootstrap.tpls.min.js"></script>
+	<script type="text/javascript" src="js/libs/angular-timer.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/filters.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>

@@ -2,32 +2,38 @@
 	angular
 		.module('TestingSystem',
 				[
+					'ui.bootstrap',
 					'app.filters',
 					'app.controllers'
 				]
 			)
 		//The App-Services:
-		.service('getQuestionList', ['$http', '$rootScope', function($http, $rootScope) {
-		
-			/*
-			$http
-				.get('test-questions/JavaScript.json')
-				.success(function(data, sts, hdrs, cfg) {
-					$rootScope.test = data;
+		.service('Quiz', ['$http', function($http) {	//get Quiz;
+			
+			this.get = function(quiz, succss) {
+				
+				var _this = this,
+					_quiz = {};
+				
+				$http
+					.get('test-questions/' + quiz + '.json')
+					.success(function(data, sts, hdrs, cfg) {
+						
+						_quiz = data;
+						
+						//Set unavailable chapters...:
+						angular.forEach(_quiz.chapters, function(chptr, k) {
+							//but the first..:
+							chptr.available = (chptr.level > 1 ? false : true);
+						});
+						
+						succss.apply(_this, [_quiz]);
+					})
+					.error(function(data, sts, hdrs, cfg) {
 					
-					//Set unavailable chapters...:
-					angular.forEach($rootScope.test.chapters, function(chapter, k) {
-						//but the first..:
-						chapter.available = (chapter.level > 1 ? false : true);
+						alert('[Getting test questions.] Some error has occured!');
 					});
-				})
-				.error(function(data, sts, hdrs, cfg) {
-					alert('[Getting test questions.] Some error has occured!');
-				});
-			*/
-			
-		}])
-		.run(['$rootScope', 'getQuestionList', function($rootScope, getQuestionList) {
-			
-			//alert(getQuestionList);
+				
+				return _quiz;
+			};
 		}]);

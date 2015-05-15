@@ -1,38 +1,97 @@
-
+	
+	body {
+		background-color: #FAFAFA;
+	}
+	
 	.caption {
+		position: relative;
+		left: 13px;
 		color: green;
+		font-size: 42px;
+		font-weight: bold;
+		text-shadow: 3px 1px 3px rgba(150, 150, 150, 0.82);
 	}
 	
 	.question-sections {
-		border: 1px solid blue;
 		display: inline-block;
 	}
 	
 	.question-section {
-		padding: 5px;
+		position: relative;
+		top: 32px;
+		left: 13px;
+		color: #2E64FE;
+		padding: 11px;
 		min-width: 295px;
 		border: 1px solid green;
+		border-radius: 6px;
 		display: inline-block;
 	}
 	
 	.current {
+		color: #5882FA;
+		
 		background-color: yellow;
+		background-color: #7ac44d;
+		/* IE9, iOS 3.2+ */
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjEwMCUiIHI9IjE0MS40MjEzNTYyMzczMDk1JSI+PHN0b3Agc3RvcC1jb2xvcj0iI2YzZWYxNSIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjMDA5ODg1IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+		/* Android 2.3- hack (needed for the actual radial gradient) */
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjEwMCUiIHI9IjE0MS40MjEzNTYyMzczMDk1JSI+PHN0b3Agc3RvcC1jb2xvcj0iI2YzZWYxNSIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjMDA5ODg1IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==),
+			-webkit-gradient(radial, left bottom, 0, left bottom, 832,color-stop(0, rgb(243, 239, 21)),color-stop(1, rgb(0, 152, 133)));
+		/* Android 2.3 */
+		background-image: -webkit-repeating-radial-gradient(left bottom, ellipse farthest-corner,rgb(243, 239, 21) 0%,rgb(0, 152, 133) 100%);
+		/* IE10+ */
+		background-image: repeating-radial-gradient(ellipse farthest-corner at left bottom,rgb(243, 239, 21) 0%,rgb(0, 152, 133) 100%);
+		background-image: -ms-repeating-radial-gradient(left bottom, ellipse farthest-corner,rgb(243, 239, 21) 0%,rgb(0, 152, 133) 100%);
+		
+		-webkit-box-shadow: 15px 14px 26px -3px rgba(0,0,0,0.75);
+		-moz-box-shadow: 15px 14px 26px -3px rgba(0,0,0,0.75);
+		box-shadow: 15px 14px 26px -3px rgba(0,0,0,0.75);
+		
+		/*background: rgb(100,100,100) radial-gradient(circle at 50% 0, rgba(255,255,255,.65), rgba(255,255,255,.35));*/
+		box-shadow:
+			inset rgba(0,0,0,.6) 0 -3px 8px,
+			inset rgba(252,255,255,.7) 0 3px 8px,
+			rgba(0,0,0,.8) 0 3px 8px -3px;
+		
+		cursor: pointer;
 	}
 	
 	.failed {
 		background-color: red;
+		background-image: none;
 	}
 	
 	.completed {
-		background-color: green;
+		background-color: #04B404;
+		background-image: none;
+		-webkit-box-shadow: 4px 8px 26px -3px rgba(0,0,0,0.75);
+		-moz-box-shadow: 4px 8px 26px -3px rgba(0,0,0,0.75);
+		box-shadow: 4px 8px 26px -3px rgba(0,0,0,0.75);
 	}
 	
 	.excellent {
-		background-color: #40FF00;
+		background-color: #64FE2E;
+		background-image: none;
+		box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+		box-shadow:
+			inset rgba(0,0,0,.6) 0 -3px 8px,
+			inset rgba(252,255,255,.7) 0 3px 8px,
+			rgba(0,0,0,.8) 0 3px 8px -3px;
 	}
 	
 	.not-available {
+		color: #848484;
 		background-color: silver;
+		background-image: none;
+		border-color: #A4A4A4;
+		/*box-shadow: none;*/
+		box-shadow:
+			inset rgba(0,0,0,.6) 0 -3px 8px,
+			inset rgba(252,255,255,.7) 0 3px 8px,
+			rgba(0,0,0,.8) 0 3px 8px -3px;
+		opacity: 0.66;
+		cursor: auto;
 	}
 	
 	.title {
@@ -66,6 +125,14 @@
 	
 	.answer {
 		color: silver;
+	}
+	
+	.answer:hover {
+		color: green;
+		font-weight: bold;
+		padding: 3px;
+		border-radius: 2px;
+		background-color: #F2F2F2;
 	}
 	
 	.test-results {

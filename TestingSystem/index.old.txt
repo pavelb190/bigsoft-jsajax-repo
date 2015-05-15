@@ -1,0 +1,19 @@
+<!--
+<body ng-controller="TestingController as Test">
+	<h1 class="caption">{{test.caption}} <span style="font-size: 14px; color: silver;">from {{test.author}}</span></h1>
+	<div class="question-sections">
+		<div class="question-section" ng-controller="TestController as currTest" ng-class="{'current': true, 'failed': answered && isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(), 'not-available': !chapter.available}" ng-repeat="chapter in test.chapters | orderChaptsBy:'level'">
+			<p class="title">
+				<a href="#">{{chapter.title}}</a>
+				<span style="font-size: 21px; color: silver;" ng-show="isCompleted(chapter.title)">{{result}}/{{chapter.questions.length}}</span>
+				<div class="control-panel" style="display: inline-block;" ng-show="chapter.available">
+					<a href="#" ng-hide="hasMinimumStability()" ng-click="beginTest(chapter.title)">Начать</a>
+					<a href="#" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-click="continueTest(chapter.title)">Продолжить</a>
+					<a href="#" ng-show="answered && (isCompleted(chapter.title) && !hasMaxResult())" ng-class="{'disabled': resultDisabled}" ng-click="!resultDisabled && testResult()">{{buttonResultsText}}</a>
+				</div>
+			</p>
+			<div class="custom-form" ng-show="resultShowed" ng-include="'js/templates/results.html'"></div>
+			<!-- <div class="custom-form" ng-show="hasBegun(chapter.title) && !isCompleted(chapter.title)" ng-include="'js/templates/test-form.html'" style="border: 1px solid green;"></div>-->
+<!--	</div>
+	</div>
+-->
