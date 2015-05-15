@@ -6,7 +6,7 @@
 			"level": 1,
 			"questions": [
 				{
-					"title": "When was JavaScript been coined?",
+					"title": "When first appeared the JavaScript?",
 					"answers": [
 						{
 							"answer": "in 1976 year"
@@ -15,8 +15,11 @@
 							"answer": "in 1978 year"
 						},
 						{
-							"answer": "in 1994 year",
+							"answer": "in 1995 year",
 							"isRight": true
+						},
+						{
+							"answer": "in 2006 year"
 						}
 					],
 					"rightAnswer": 2
@@ -25,14 +28,17 @@
 					"title": "Who is a creator of JavaScript?",
 					"answers": [
 						{
-							"answer": "Me"
+							"answer": "Bill Gates"
 						},
 						{
-							"answer": "He",
+							"answer": "Brendan Eich",
 							"isRight": true
 						},
 						{
-							"answer": "You"
+							"answer": "Michael Jackson"
+						},
+						{
+							"answer": "Steve Jobs"
 						}
 					],
 					"rightAnswer": 1
@@ -41,16 +47,39 @@
 					"title": "JavaScript is:",
 					"answers": [
 						{
-							"answer": "functional"
+							"answer": "compiled to binary code (Win32)"
 						},
 						{
-							"answer": "prototype inheritance"
+							"answer": "compiled to byte-code (as Java) and runs everywhere"
 						},
 						{
-							"answer": "interpreted"
+							"answer": "language of programming microwave oven"
+						},
+						{
+							"answer": "multi-paradigm",
+							"isRight": true
 						}
 					],
-					"rightAnswer": 0
+					"rightAnswer": 3
+				},
+				{
+					"title": "JavaScript has (about inheritance):",
+					"answers": [
+						{
+							"answer": "class statement"
+						},
+						{
+							"answer": "extends keyword"
+						},
+						{
+							"answer": "prototype-based inheritance",
+							"isRight": true
+						},
+						{
+							"answer": "no inheritance"
+						}
+					],
+					"rightAnswer": 2
 				}
 			],
 			"minimumStability": 2,
@@ -64,20 +93,121 @@
 			"level": 2,
 			"questions": [
 				{
-					"title": "Why do we need to use the var keyword?",
+					"title": "Inside which HTML element do we put the JavaScript?",
 					"answers": [
 						{
-							"answer": "To define the variable on local or functional scope",
+							"answer": "<scripting>"
+						},
+						{
+							"answer": "<script>",
 							"isRight": true
+						},
+						{
+							"answer": "<js>"
 						},
 						{
 							"answer": "I don't know"
 						}
 					],
+					"rightAnswer": 1
+				},
+				{
+					"title": "Why do we need to use the var keyword?",
+					"answers": [
+						{
+							"answer": "To define the variable on local (functional) scope",
+							"isRight": true
+						},
+						{
+							"answer": "To access outer variable on local (functional) scope"
+						},
+						{
+							"answer": "To define outer variables as local"
+						},
+						{
+							"answer": "To define a public method of class"
+						}
+					],
 					"rightAnswer": 0
+				},
+				{
+					"title": "What kind of loop statement JavaScript doesn't have?",
+					"answers": [
+						{
+							"answer": "for(...) {}"
+						},
+						{
+							"answer": "do {} while(...)"
+						},
+						{
+							"answer": "while(...) {}"
+						},
+						{
+							"answer": "foreach(...) {}",
+							"isRight": true
+						}
+					],
+					"rightAnswer": 3
+				},
+				{
+					"title": "What keyword is used for breaking the loop?",
+					"answers": [
+						{
+							"answer": "quit"
+						},
+						{
+							"answer": "enough"
+						},
+						{
+							"answer": "exit"
+						},
+						{
+							"answer": "break",
+							"isRight": true
+						}
+					],
+					"rightAnswer": 3
+				},
+				{
+					"title": "How we can return value from the called function?",
+					"answers": [
+						{
+							"answer": "return 'A';",
+							"isRight": true
+						},
+						{
+							"answer": "quit(25);"
+						},
+						{
+							"answer": "exit(134);"
+						},
+						{
+							"answer": "result 1;"
+						}
+					],
+					"rightAnswer": 0
+				},
+				{
+					"title": "What is 'this' keyword on a object's methods?",
+					"answers": [
+						{
+							"answer": "it's a variable passed to the method by user"
+						},
+						{
+							"answer": "Prototype's reference for further using"
+						},
+						{
+							"answer": "Reference of object which invokes this method",
+							"isRight": true
+						},
+						{
+							"answer": "There is no such keyword"
+						}
+					],
+					"rightAnswer": 2
 				}
 			],
-			"minimumStability": 1
+			"minimumStability": 6
 		},
 		"Advanced": {
 			"level": 3,
@@ -86,14 +216,39 @@
 					"title": "What is the Closure?",
 					"answers": [
 						{
-							"answer": "It's the function with the special scope of inner variables",
+							"answer": "It's a function with the special scope of inner variables",
 							"isRight": true
 						},
 						{
-							"answer": "I don't know"
+							"answer": "It's a function which invokes yourself recursively"
+						},
+						{
+							"answer": "It's a function with a changed 'this' value"
+						},
+						{
+							"answer": "It's a function with a loop statement inside"
 						}
 					],
 					"rightAnswer": 0
+				},
+				{
+					"title": "What is MVC?",
+					"answers": [
+						{
+							"answer": "It's a special HTTP-based technology for a web-sites development"
+						},
+						{
+							"answer": "It's a app development approach with layering its structure",
+							"isRight": true
+						},
+						{
+							"answer": "It's a stack of some Web-technologies"
+						},
+						{
+							"answer": "It's a popular web-framework"
+						}
+					],
+					"rightAnswer": 1
 				}
 			],
 			"minimumStability": 1
@@ -102,10 +257,10 @@
 			"level": 4,
 			"questions": [
 				{
-					"title": "What is the MVC-framework for Single Page Application developed by and support by Google company?",
+					"title": "What is the MVC-framework for Single Page Application developed by and support by Google Inc.?",
 					"answers": [
 						{
-							"answer": "It's EmberJs, of course!"
+							"answer": "It's EmberJS, of course!"
 						},
 						{
 							"answer": "It's AngularJS",
@@ -113,6 +268,9 @@
 						},
 						{
 							"answer": "I don't know"
+						},
+						{
+							"answer": "It's ReactJS"
 						}
 					],
 					"rightAnswer": 1

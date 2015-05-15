@@ -141,9 +141,46 @@
 				_toNextQuestion();
 			};
 			
+			$scope.skipQuestion = function() {
+				
+				$rootScope.quiz.chapters[chapter].questions[$scope.cqIdx].answered = null;
+				
+				_toNextQuestion();
+			};
+			
+			$scope.getQuestionCount = function(chptr) {
+				
+				return $rootScope.quiz.chapters[chptr].questions.length;
+			};
+			
+			$scope.getNumber = function(num) {
+				
+				var _arr = new Array(num);
+				
+				for(var i = 0; i < _arr.length; i++) {
+					
+					_arr[i] = i;
+				}
+				
+				return _arr;
+			};
+			
 			$scope.cancel = function() {
 				
 				$modalInstance.dismiss('cancel');
+			};
+		}])
+		.directive('progressBar', [function() {
+			
+			return {
+				template: '<div style="float: left; text-align: left; width: 100%; margin-bottom: 3px;">' +
+						//'{{getNumber(4)}}' +
+						'<table style="width: 100%;" border="0">' +
+							'<tr style="height: 4px;">' +
+								'<td ng-class="{\'skipped\': getQuestion($index).answered === null, \'completed\': getQuestion($index).answered === getQuestion($index).rightAnswer, \'failed\': (getQuestion($index).answered !== undefined && getQuestion($index).answered !== null) && getQuestion($index).answered !== getQuestion($index).rightAnswer}" ng-repeat="i in getNumber(getQuestionCount(chapter))"></td>' +
+							'</tr>' +
+						'</table>' +
+					'</div>'
 			};
 		}])
 		//Controller of one section of the Test:

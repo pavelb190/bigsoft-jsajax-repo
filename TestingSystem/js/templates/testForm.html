@@ -7,14 +7,19 @@
 			{{getQuestion(cqIdx).title}}
 		</p>
 		<hr/>
-		<div>
+		<div style="display: inline-block;">
 			<ol style="color: silver; list-style-type: lower-alpha;">
 				<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">
 					<a href="#" class="answer" ng-click="applyAnswer(i)">{{answer.answer}}</a>
 				</li>
 			</ol>
 		</div>
+		<a href="#" style="position: relative; float: right; height: 75px; border: 1px solid silver; border-radius: 0px 4px 4px 0px; display: inline-block;" ng-click="skipQuestion()">
+			<img style="position: relative; top: 14px; height: 41px;" src="images/skip-icon.png"/>
+		</a>
 	</div>
-	<div class="modal-footer">
+	<div class="modal-footer" style="padding-top: 0;">
+		<div progress-bar></div>
+		<span style="color: silver; float: left;">{{cqIdx + 1}}/{{getQuestionCount(chapter)}}</span>
 		<button class="btn btn-warning" ng-click="cancel()">Завершить тест</button>
 	</div>

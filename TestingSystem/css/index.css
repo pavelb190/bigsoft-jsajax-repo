@@ -28,6 +28,10 @@
 		display: inline-block;
 	}
 	
+	.skipped {
+		background-color: yellow;
+	}
+	
 	.current {
 		color: #5882FA;
 		
