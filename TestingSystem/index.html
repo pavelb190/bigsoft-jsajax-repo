@@ -5,12 +5,15 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/style/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/jquery-ui/jquery-ui.theme.min.css">
+	<link rel="stylesheet" href="css/jquery-ui/jquery-ui.structure.min.css">
+	<link rel="stylesheet" href="css/jquery-ui/jquery-ui.min.css">
 	<link rel="stylesheet" href="css/index.css">
 </head>
 <body ng-controller="TestingCtrl">
 	<h1 class="caption">&ldquo;{{quiz.caption}}&rdquo; <span style="font-size: 14px; color: silver;">from {{quiz.author}}&copy;</span></h1>
 	<div class="question-sections">
-		<div class="question-section" ng-controller="ChapterCtrl" ng-click="chapter.available && !hasMaxResult(chapter.title) && showTestForm(chapter.title)" ng-class="{'current': true, 'failed': isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(chapter.title), 'not-available': !chapter.available}" ng-repeat="chapter in quiz.chapters | orderChaptsBy:'level'">
+		<div class="question-section" ng-controller="ChapterCtrl" ng-click="chapter.available && !hasMaxResult(chapter.title) && beginTest(chapter.title)" ng-class="{'current': true, 'failed': isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(chapter.title), 'not-available': !chapter.available}" ng-repeat="chapter in quiz.chapters | orderChaptsBy:'level'">
 			<p class="title">
 				<h2 style="margin: 0; display: inline-block;">{{chapter.title}}</h2>
 				<h3 style="margin: 0; padding: 5px 6px 0px 0px; float: right; display: inline-block;">
@@ -19,16 +22,18 @@
 				</h3>
 			</p>
 			<div class="control-panel" style="display: absolute;" ng-show="chapter.available">
-				<a href="#" ng-hide="hasMaxResult(chapter.title)" ng-click="showTestForm(chapter.title); $event.stopPropagation();">Начать</a>
+				<a href="#" ng-hide="hasMaxResult(chapter.title)" ng-click="beginTest(chapter.title); $event.stopPropagation();">Начать</a>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/libs/angular.min.js"></script>
 	<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/libs/ui-bootstrap.tpls.min.js"></script>
 	<script type="text/javascript" src="js/libs/angular-animate.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/filters.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
 </body>
 </html>

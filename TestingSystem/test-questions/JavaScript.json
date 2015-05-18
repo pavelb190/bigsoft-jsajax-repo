@@ -82,6 +82,7 @@
 					"rightAnswer": 2
 				}
 			],
+			"time": 1.5,
 			"minimumStability": 2,
 			"references": [
 				"http://wikipedia.com",
@@ -207,6 +208,7 @@
 					"rightAnswer": 2
 				}
 			],
+			"time": 3.5,
 			"minimumStability": 6
 		},
 		"Advanced": {
@@ -251,6 +253,7 @@
 					"rightAnswer": 1
 				}
 			],
+			"time": 1.5,
 			"minimumStability": 1
 		},
 		"Frameworks": {
@@ -276,6 +279,7 @@
 					"rightAnswer": 1
 				}
 			],
+			"time": 0.5,
 			"minimumStability": 1
 		}
 	}

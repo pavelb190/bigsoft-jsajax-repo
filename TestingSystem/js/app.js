@@ -4,7 +4,8 @@
 				[
 					'ui.bootstrap',
 					'app.filters',
-					'app.controllers'
+					'app.controllers',
+					'app.directives'
 				]
 			)
 		//The App-Services:
