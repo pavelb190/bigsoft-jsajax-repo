@@ -50,7 +50,7 @@
 							
 							_start -= 1;
 							
-							if (_start < 60) {
+							if (_start < 30) {
 								
 								$element.addClass('last-minute');
 							}
