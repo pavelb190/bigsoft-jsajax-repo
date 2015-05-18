@@ -1,0 +1,40 @@
+
+	
+	<div id="login-form" ng-controller="LoginCtrl">
+		<h2 style="padding-bottom: 12px; text-align: center; color: green;">Welcome to Testing System!! <span style="color: silver; font-size: 14px;">(developer by PavelB.&copy;)</span></h2>
+		<form>
+			<table style="margin: auto; width: 88%;" border="0">
+				<tr>
+					<td colspan="2">
+						<hr style="margin: 6px 0px 13px 0px;"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="title">
+						<label>Enter your Name, please:</label>
+					</td>
+					<td>
+						<input type="text" ng-model="user.name" placeholder="Type Login here..." required/>
+					</td>
+				</tr>
+				<tr>
+					<td class="title">
+						<label style="color: silver;" title="Необязательное*">Enter your e-mail*:</label>
+					</td>
+					<td>
+						<input type="email" ng-model="user.email" placeholder="email@example.com"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<hr style="margin: 8px 0px 9px 0px;"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" style="float: right;" ng-click="user.name && goToNext();" value="Go Test!! >>"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>

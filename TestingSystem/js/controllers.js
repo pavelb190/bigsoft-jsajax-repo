@@ -2,13 +2,45 @@
 	angular
 		.module('app.controllers', [])
 		//The App-Controllers:
-		//The Main controller of app:
-		.controller('TestingCtrl', ['$scope', '$rootScope', 'Quiz', function($scope, $rootScope, Quiz) {
+		.controller('LoginCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
 			
-			Quiz.get('JavaScript', function(data) {
+			$scope.goToNext = function() {
 				
-				$rootScope.quiz = data;
+				$rootScope.user = {
+					name: $scope.user.name,
+					email: $scope.user.email || null
+				};
+				
+				$location.path('/');
+			};
+		}])
+		//The Main controller of app:
+		.controller('TestingCtrl', ['$scope', '$rootScope', '$location', 'Quiz', function($scope, $rootScope, $location, Quiz) {
+			
+			$rootScope.$watch('user', function(val) {
+				
+				if (!angular.isDefined($rootScope.user)) {
+					
+					$location.path('/login');
+				}
+				else {
+					
+					Quiz.get('JavaScript', function(data) {
+						
+						$rootScope.quiz = data;
+					});
+				}
 			});
+			
+			$scope.$on('testingIsComplete', function() {
+				
+				alert("Testing is Complete!");
+			});
+			
+			$scope.userQuit = function() {
+				
+				$rootScope.user = undefined;
+			};
 		}])
 		.controller('ChapterCtrl', ['$scope', '$modal', '$rootScope', function($scope, $modal, $rootScope) {
 			
@@ -22,8 +54,6 @@
 				
 				for(var chapter in _chapters) {
 					
-					//alert(_chapters[chapter].level + " " + _curLvl);
-					
 					if (_chapters[chapter].level == _curLvl+1) {
 						
 						_chapters[chapter].available = availble;
@@ -33,6 +63,21 @@
 						_chapters[chapter].available = false;
 					}
 				}
+			};
+			
+			var _isLastChapter = function(chptr) {
+				
+				var _chapters = $rootScope.quiz.chapters,
+					_curLvl = _chapters[chptr].level;
+				
+				for(var chapter in _chapters) {
+					
+					if (_chapters[chapter].level > _curLvl) {
+						
+						return false;
+					}
+				}
+				return true;
 			};
 			
 			var _showTestForm = function(chptr) {
@@ -57,6 +102,11 @@
 					$rootScope.$watch('quiz.chapters[chptr].result', function() {
 						
 						_setNextChapterAvailable(chptr, $scope.hasMinimumStability(chptr));
+						
+						if (_isLastChapter(chptr)) {
+							
+							$rootScope.$broadcast('testingIsComplete');
+						};
 					});
 				});
 			};
@@ -131,6 +181,17 @@
 				
 				return $rootScope.quiz.chapters[chapter].questions[idx] || null;
 			};
+			
+			/*
+			$scope.shuffleArr = function(arr){
+			
+				for(var j, x, i = arr.length;
+						i;
+						j = Math.floor(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+				
+				return arr;
+			}
+			*/
 			
 			var _checkAnswer = function(answr) {
 				

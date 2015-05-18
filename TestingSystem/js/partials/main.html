@@ -1,0 +1,23 @@
+
+	<div ng-controller="TestingCtrl">
+		<header>
+			<h1 style="display: inline-block;" class="caption">&ldquo;{{quiz.caption}}&rdquo; <span style="font-size: 14px; color: silver;">from {{quiz.author}}&copy;</span></h1>
+			<div style="position: relative; float: right; right: 86px;">
+				<h3 style="font-weight: bold; font-size: 16px; display: inline-block;">Hi, <span style="font-weight: bold; color: blue;">{{user.name}}</span>!</h3> | <a id="btn-user-quit" href="" ng-click="userQuit();">Quit</a>
+			</div>
+		</header>
+		<div class="question-sections">
+			<div class="question-section" ng-controller="ChapterCtrl" ng-click="chapter.available && !hasMaxResult(chapter.title) && beginTest(chapter.title)" ng-class="{'current': true, 'failed': isCompleted(chapter.title) && !hasMinimumStability(chapter.title), 'completed': isCompleted(chapter.title) && hasMinimumStability(chapter.title), 'excellent': isCompleted(chapter.title) && hasMaxResult(chapter.title), 'not-available': !chapter.available}" ng-repeat="chapter in quiz.chapters | orderChaptsBy:'level'">
+				<p class="title">
+					<h2 style="margin: 0; display: inline-block;">{{chapter.title}}</h2>
+					<h3 style="margin: 0; padding: 5px 6px 0px 0px; float: right; display: inline-block;">
+						<img style="height: 51px; vertical-align: center;" ng-show="chapter.available && hasMaxResult(chapter.title)" src="images/gold_medal.png"/>
+						<span ng-show="chapter.available && isCompleted(chapter.title) && !hasMaxResult(chapter.title)">{{getResult(chapter.title)}}/{{getQuestionCount(chapter.title)}}</span>
+					</h3>
+				</p>
+				<div class="control-panel" style="display: absolute;" ng-show="chapter.available">
+					<a href="#" ng-hide="hasMaxResult(chapter.title)" ng-click="beginTest(chapter.title); $event.stopPropagation();">Начать</a>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -3,6 +3,7 @@
 		.module('TestingSystem',
 				[
 					'ui.bootstrap',
+					'ngRoute',
 					'app.filters',
 					'app.controllers',
 					'app.directives'
@@ -37,4 +38,17 @@
 				
 				return _quiz;
 			};
+		}])
+		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+			
+			$routeProvider
+				.when('/login', {
+					templateUrl: 'js/partials/login.html'
+				})
+				.when('/', {
+					templateUrl: 'js/partials/main.html'
+				})
+				.otherwise({
+					redirectTo: '/login'
+				});
 		}]);

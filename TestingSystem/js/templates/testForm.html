@@ -10,11 +10,14 @@
 		<div style="display: inline-block;">
 			<ol style="color: silver; list-style-type: lower-alpha;">
 				<li ng-repeat="(i, answer) in getQuestion(cqIdx).answers">
-					<a href="#" class="answer" ng-click="applyAnswer(i)">{{answer.answer}}</a>
+					<a href="" class="answer" ng-click="applyAnswer(i)">{{answer.answer}}</a>
 				</li>
 			</ol>
 		</div>
-		<a id="btn-skip-question" href="#" ng-click="skipQuestion()" title="Пропустить вопрос..">
+		<div>
+			<a href="#" ng-repeat="i in _shuffleArr([1,2,3,4,5])">{{i}} </a>
+		</div>
+		<a id="btn-skip-question" href="" ng-click="skipQuestion()" title="Пропустить вопрос..">
 			<img style="position: relative; top: 14px; height: 41px;" src="images/skip-icon.png"/>
 		</a>
 	</div>
