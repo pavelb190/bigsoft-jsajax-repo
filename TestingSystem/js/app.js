@@ -1,54 +1,29 @@
 	
-	angular
-		.module('TestingSystem',
-				[
-					'ui.bootstrap',
-					'ngRoute',
-					'app.filters',
-					'app.controllers',
-					'app.directives'
-				]
-			)
-		//The App-Services:
-		.service('Quiz', ['$http', function($http) {	//get Quiz;
-			
-			this.get = function(quiz, succss) {
-				
-				var _this = this,
-					_quiz = {};
-				
-				$http
-					.get('test-questions/' + quiz + '.json')
-					.success(function(data, sts, hdrs, cfg) {
-						
-						_quiz = data;
-						
-						//Set unavailable chapters...:
-						angular.forEach(_quiz.chapters, function(chptr, k) {
-							//but the first..:
-							chptr.available = (chptr.level > 1 ? false : true);
-						});
-						
-						succss.apply(_this, [_quiz]);
-					})
-					.error(function(data, sts, hdrs, cfg) {
+	var app =
+			/* The App's instantiating: */
+			angular
+				.module('TestingSystem',
+						[
+							'ui.bootstrap',
+							'ngRoute',
+							'app.services',
+							'app.filters',
+							'app.controllers',
+							'app.directives'
+						]
+					)
+				.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 					
-						alert('[Getting test questions.] Some error has occured!');
-					});
-				
-				return _quiz;
-			};
-		}])
-		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-			
-			$routeProvider
-				.when('/login', {
-					templateUrl: 'js/partials/login.html'
-				})
-				.when('/', {
-					templateUrl: 'js/partials/main.html'
-				})
-				.otherwise({
-					redirectTo: '/login'
-				});
-		}]);
+					$routeProvider
+						.when('/login', {
+							controller: 'LoginCtrl',
+							templateUrl: 'js/partials/login.html'
+						})
+						.when('/', {
+							controller: 'TestingCtrl',
+							templateUrl: 'js/partials/main.html'
+						})
+						.otherwise({
+							redirectTo: '/login'
+						});
+				}]);
